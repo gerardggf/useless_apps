@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/const/global.dart';
+import 'presentation/global/theme.dart';
 import 'presentation/routes/router_mixin.dart';
 
 class UselessApp extends StatefulWidget {
@@ -16,7 +17,7 @@ class _UselessAppState extends State<UselessApp> with RouterMixin {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: Global.appName,
-      routerConfig: router,
+      routerConfig: router,theme: UselessTheme.lightTeme,
     );
   }
 }
