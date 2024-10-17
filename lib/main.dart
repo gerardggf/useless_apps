@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'app/presentation/modules/home/home_view.dart';
+import 'package:useless_apps/app/useless_app.dart';
 
 void main() {
   runApp(
     const ProviderScope(
       overrides: [],
-      child: MyApp(),
+      child: UselessApp(),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Useless apps',
-      home: HomeView(),
-    );
-  }
 }
