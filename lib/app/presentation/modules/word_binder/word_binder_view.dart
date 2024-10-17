@@ -31,11 +31,11 @@ class _WordBinderViewState extends ConsumerState<WordBinderView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (state.isNotEmpty)
+            if (state.word.isNotEmpty)
               IconButton(
                 onPressed: () {
                   Share.share(
-                    'Eres un ${state.toLowerCase()}',
+                    'Eres un ${state.word.toLowerCase()}',
                   );
                 },
                 icon: const Icon(
@@ -44,16 +44,40 @@ class _WordBinderViewState extends ConsumerState<WordBinderView> {
                   size: 40,
                 ),
               ),
-            if (state.isNotEmpty) 20.h,
-            if (state.isNotEmpty)
+            if (state.word.isNotEmpty) 20.h,
+            if (state.word.isNotEmpty)
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  state,
+                  state.word,
                   style: const TextStyle(fontSize: 30),
                 ),
               ),
-            if (state.isNotEmpty) 30.h,
+            if (state.word.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      notifier.updateLockFirstWord(!state.firstWordLocked);
+                    },
+                    child: Icon(
+                      state.firstWordLocked ? Icons.lock : Icons.lock_open,
+                      color: Colors.white,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      notifier.updateLockSecondWord(!state.secondWordLocked);
+                    },
+                    child: Icon(
+                      state.secondWordLocked ? Icons.lock : Icons.lock_open,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            if (state.word.isNotEmpty) 30.h,
             ElevatedButton(
               onPressed: () {
                 notifier.updateRandomWord();
